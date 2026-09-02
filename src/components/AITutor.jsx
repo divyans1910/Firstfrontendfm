@@ -16,7 +16,6 @@ export default function AITutor() {
     clearAllChatSessions,
     selectChatSession,
     deleteChatSession,
-    clearCurrentChat,
     deleteChatMessage,
     sendAiMessage,
     showToast,
@@ -95,71 +94,72 @@ export default function AITutor() {
               </div>
             </div>
           </div>
-
-          <div className="pt-4 border-t border-slate-200/80 dark:border-slate-700/80 space-y-2 text-xs text-slate-500 dark:text-slate-400 font-semibold flex-shrink-0">
-            <button type="button" onClick={() => showToast('Help Center', 'AI Tutor user guide and prompt tips opened', 'info')} className="w-full flex items-center gap-2 hover:text-purple-600 cursor-pointer">
-              <HelpCircle className="w-4 h-4" />
-              <span>Help Center</span>
-            </button>
-            <button type="button" onClick={() => showToast('Archived Chats', '0 archived conversations', 'info')} className="w-full flex items-center gap-2 hover:text-purple-600 cursor-pointer">
-              <Archive className="w-4 h-4" />
-              <span>Archived Chats</span>
-            </button>
-          </div>
         </div>
 
         <div className="lg:col-span-3 flex flex-col justify-between h-full min-h-0 p-5 sm:p-6 bg-white dark:bg-slate-800 relative overflow-hidden">
-          <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 dark:border-slate-700 flex-shrink-0">
-            <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-2.5 py-1 rounded-md">Chat Interface</span>
-              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white font-display mt-0.5">FutureMinds AI Tutor</h3>
-            </div>
-            <div className="flex items-center gap-2">
-              <button type="button" onClick={clearCurrentChat} className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer" title="Clear current conversation messages">
-                <Trash2 className="w-3.5 h-3.5" />
-                <span>Clear Chat</span>
-              </button>
-              <button type="button" onClick={() => showToast('AI Tutor Guru', 'Professor Owl is available 24/7 for guided hints!', 'info')} className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-200 font-bold text-sm flex items-center justify-center hover:bg-purple-100 hover:text-purple-600 transition-colors cursor-pointer">
-                ?
-              </button>
-            </div>
-          </div>
-
           <div id="ai-messages-stream" ref={streamRef} className="flex-1 overflow-y-auto py-5 space-y-5 pr-2 min-h-0">
-            {currentSession?.messages.map((message, index) =>
-              message.sender === 'owl' ? (
-                <div key={`${message.sender}-${index}`} className="group relative flex items-start gap-3.5 max-w-2xl">
-                  <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-950/60 flex-shrink-0 overflow-hidden shadow-sm flex items-center justify-center text-xl">🦉</div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-bold text-slate-500 dark:text-slate-400">Professor Owl</span>
+            {!currentSession || !currentSession.messages || currentSession.messages.length === 0 ? (
+              <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-3">
+                <div className="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-950/60 flex items-center justify-center overflow-hidden shadow-inner">
+                  <img
+                    src="/dist/assets/orin.jpeg"
+                    alt="Orin"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-base font-black text-slate-800 dark:text-white font-display">Chat with Orin, your AI Tutor</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm">Ask a question below, or pick a quick prompt like "Hint" or "Quiz Me" to start chatting!</p>
+              </div>
+            ) : (
+              currentSession.messages.map((message, index) => {
+                const isUser = message.sender === user.name || message.sender === 'user';
+
+                return isUser ? (
+                  <div key={`${message.sender}-${index}`} className="group relative flex flex-col items-end max-w-2xl ml-auto">
+                    <div className="flex items-center gap-2 mb-1">
                       <button type="button" onClick={() => deleteChatMessage(index)} title="Delete message" className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-500 transition-opacity p-0.5 cursor-pointer">
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
+                      <span className="text-xs font-bold text-slate-500 dark:text-slate-400">{user.name}</span>
                     </div>
-                    <div className="bg-purple-50 dark:bg-purple-950/50 border border-purple-100 dark:border-purple-900/60 rounded-3xl rounded-tl-sm px-5 py-3.5 text-sm text-slate-800 dark:text-slate-200 leading-relaxed shadow-sm">
+                    <div className="bg-purple-600 text-white rounded-3xl rounded-tr-sm px-5 py-3.5 text-sm leading-relaxed shadow-md shadow-purple-600/20 whitespace-pre-wrap break-words">
                       {message.text}
                     </div>
                   </div>
-                </div>
-              ) : (
-                <div key={`${message.sender}-${index}`} className="group relative flex flex-col items-end max-w-2xl ml-auto">
-                  <div className="flex items-center gap-2 mb-1">
-                    <button type="button" onClick={() => deleteChatMessage(index)} title="Delete message" className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-500 transition-opacity p-0.5 cursor-pointer">
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
-                    <span className="text-xs font-bold text-slate-500 dark:text-slate-400">{user.name}</span>
+                ) : (
+                  <div key={`${message.sender}-${index}`} className="group relative flex items-start gap-3.5 max-w-2xl">
+                    <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-950/60 flex-shrink-0 overflow-hidden shadow-sm flex items-center justify-center">
+                      <img
+                        src="/dist/assets/orin.jpeg"
+                        alt="Orin"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-xs font-bold text-slate-500 dark:text-slate-400">Orin</span>
+                        <button type="button" onClick={() => deleteChatMessage(index)} title="Delete message" className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-500 transition-opacity p-0.5 cursor-pointer">
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                      <div className="bg-purple-50 dark:bg-purple-950/50 border border-purple-100 dark:border-purple-900/60 rounded-3xl rounded-tl-sm px-5 py-3.5 text-sm text-slate-800 dark:text-slate-200 leading-relaxed shadow-sm whitespace-pre-wrap break-words">
+                        {message.text}
+                      </div>
+                    </div>
                   </div>
-                  <div className="bg-purple-600 text-white rounded-3xl rounded-tr-sm px-5 py-3.5 text-sm leading-relaxed shadow-md shadow-purple-600/20">
-                    {message.text}
-                  </div>
-                </div>
-              )
+                );
+              })
             )}
 
             {aiTutor.isTyping && (
               <div id="ai-typing-indicator" className="flex items-start gap-3.5 max-w-2xl">
-                <div className="w-10 h-10 rounded-full bg-purple-100 flex-shrink-0 flex items-center justify-center text-xl">🦉</div>
+                <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-950/60 flex-shrink-0 overflow-hidden shadow-sm flex items-center justify-center">
+                  <img
+                    src="/dist/assets/orin.jpeg"
+                    alt="Orin"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="bg-purple-50 dark:bg-purple-950/50 border border-purple-100 dark:border-purple-900/60 rounded-3xl rounded-tl-sm px-5 py-3.5 text-sm flex items-center gap-1.5 shadow-sm">
                   <span className="w-2 h-2 rounded-full bg-purple-600 typing-dot" />
                   <span className="w-2 h-2 rounded-full bg-purple-600 typing-dot" />
@@ -172,7 +172,7 @@ export default function AITutor() {
           <div className="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-700 flex-shrink-0">
             <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
               <button type="button" onClick={() => sendAiMessage('Give me a quick hint on how activation functions work!')} className="px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-700/60 text-slate-700 dark:text-slate-300 hover:bg-purple-100 hover:text-purple-700 dark:hover:bg-purple-900/40 dark:hover:text-purple-300 font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer">
-                <span>💡</span> Hint
+                Hint
               </button>
               <button type="button" onClick={() => sendAiMessage('Can you explain this simpler like I am in 6th grade?')} className="px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-700/60 text-slate-700 dark:text-slate-300 hover:bg-purple-100 hover:text-purple-700 dark:hover:bg-purple-900/40 dark:hover:text-purple-300 font-semibold transition-all whitespace-nowrap cursor-pointer">
                 Explain Simpler
@@ -200,7 +200,7 @@ export default function AITutor() {
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') sendAiMessage();
                 }}
-                placeholder="Ask something, or say 'give me a hint'"
+                placeholder="Ask Orin something, or say 'give me a hint'"
                 className="flex-1 bg-transparent text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
               />
               <button type="button" onClick={() => sendAiMessage()} className="w-10 h-10 rounded-xl bg-purple-600 hover:bg-purple-700 text-white flex items-center justify-center shadow-md shadow-purple-600/30 transition-all cursor-pointer">

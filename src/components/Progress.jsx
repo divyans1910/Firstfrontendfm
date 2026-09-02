@@ -24,9 +24,9 @@ const BADGES = [
 const LEADERBOARD_TABS = ['Global', 'Class', 'Friends'];
 
 const LEADERBOARD = [
-  { rank: 1, initials: 'AC', name: 'Alex Chen', level: 'Lvl 15', xp: '3,200 XP', style: 'first' },
-  { rank: 2, initials: 'SR', name: 'Sam Rivera', level: 'Lvl 14', xp: '2,950 XP' },
-  { rank: 3, initials: 'JL', name: 'Jordan Lee', level: 'Lvl 13', xp: '2,810 XP', bronze: true },
+  { rank: 1, initials: 'AS', name: 'Arjun S.', level: 'Lvl 15', xp: '12,400 XP', style: 'first' },
+  { rank: 2, initials: 'PV', name: 'Priya V.', level: 'Lvl 14', xp: '11,800 XP' },
+  { rank: 3, initials: 'IM', name: 'Ishaan M.', level: 'Lvl 13', xp: '11,280 XP', bronze: true },
 ];
 
 export default function Progress() {

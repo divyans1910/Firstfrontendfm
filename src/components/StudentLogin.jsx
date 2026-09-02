@@ -12,8 +12,12 @@ export default function StudentLogin() {
   return (
     <main id="view-student-login" className="view-container flex-1 max-w-md w-full mx-auto px-4 py-8 flex flex-col items-center justify-center">
       <div className="w-full bg-white dark:bg-slate-800/95 rounded-3xl p-8 sm:p-10 shadow-xl border border-purple-100/80 dark:border-slate-700/80 relative backdrop-blur-md">
-        <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 p-1 mx-auto -mt-16 shadow-lg shadow-purple-600/30 mb-4 flex items-center justify-center">
-          <div className="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center text-4xl">🦉</div>
+        <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 p-1 mx-auto -mt-16 shadow-lg shadow-purple-600/30 mb-4 flex items-center justify-center overflow-hidden">
+          <img
+            src="dist/assets/lumi.gif"
+            alt="Animated owl"
+            className="w-full h-full object-cover rounded-full"
+          />
         </div>
 
         <div className="text-center mb-7">

@@ -33,13 +33,13 @@ export default function VideoLesson() {
 
   return (
     <main id="view-video" className="view-container p-6 lg:p-10 max-w-7xl mx-auto w-full space-y-6">
-      <nav className="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+      {/* <nav className="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
         <button type="button" onClick={() => navigateTo('roadmap-1')} className="hover:text-purple-600">Learning Roadmap</button>
         <span>&gt;</span>
         <button type="button" onClick={() => navigateTo('roadmap-2')} className="hover:text-purple-600">Unit 1: Neural Foundations</button>
         <span>&gt;</span>
         <span className="text-purple-600 dark:text-purple-400 font-bold">Neural Basics</span>
-      </nav>
+      </nav> */}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 space-y-6">
@@ -49,16 +49,16 @@ export default function VideoLesson() {
 
             <div className="relative z-10 p-5 flex items-start justify-between">
               <div>
-                <div className="text-[11px] font-extrabold uppercase tracking-wider text-purple-400">Video Lesson: Neural Foundations (FutureMinds)</div>
-                <div className="text-xs text-white/80 font-medium">Lesson 4: The Architecture of Intelligence</div>
+                {/* <div className="text-[11px] font-extrabold uppercase tracking-wider text-purple-400">Video Lesson: Neural Foundations (FutureMinds)</div> */}
+                <div className="text-xs text-white/80 font-medium">Lesson 2: Neural Basics</div>
               </div>
-              <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/40 flex items-center gap-3 max-w-xs animate-pulse">
+              {/* <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/40 flex items-center gap-3 max-w-xs animate-pulse">
                 <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-base flex-shrink-0">🧙‍♂️</div>
                 <div>
                   <div className="text-[10px] font-extrabold text-purple-600 uppercase">Sage says:</div>
                   <div className="text-xs font-semibold text-slate-800 dark:text-slate-200 leading-tight">Pay close attention to the activation function section!</div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="relative z-10 my-auto mx-auto">
@@ -74,12 +74,12 @@ export default function VideoLesson() {
 
             <div className="relative z-10 p-5 pt-0 space-y-2.5">
               <div className="flex items-center justify-between text-xs text-white/90">
-                <div className="flex items-center gap-2">
+                {/* <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                   <span className="font-bold">Aris Thorne</span>
                   <span className="text-white/60">• AI Researcher • 512 Students Watching</span>
-                </div>
-                <div className="text-xs font-mono font-bold text-purple-300">Time Remaining: 24:38 / 45:00</div>
+                </div> */}
+                {/* <div className="text-xs font-mono font-bold text-purple-300">Time Remaining: 01:12 / 2:00</div> */}
               </div>
               <div className="w-full bg-white/20 h-2 rounded-full overflow-hidden cursor-pointer relative" onClick={() => showToast('Scrubbed', 'Jumped timeline position', 'info')}>
                 <div className="bg-purple-500 h-full w-[45%] rounded-full relative">
@@ -94,7 +94,7 @@ export default function VideoLesson() {
                   <button type="button" onClick={() => showToast('Volume', 'Volume set to 100%', 'info')} className="hover:text-purple-400 transition-colors">
                     <Volume2 className="w-5 h-5" />
                   </button>
-                  <span className="text-[11px] text-white/70 font-mono">20:22 / 45:00</span>
+                  <span className="text-[11px] text-white/70 font-mono">01:12 / 02:00</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <button type="button" onClick={() => showToast('Speed', 'Playback Speed: 1.0x', 'info')} className="hover:text-purple-400 text-xs font-bold font-mono">1.0x</button>

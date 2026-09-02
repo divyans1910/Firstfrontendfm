@@ -25,11 +25,11 @@ export default function ChapterCard({ chapter }) {
       }`}
     >
       <div className="flex items-center justify-between mb-4">
-        {isCompleted && (
-          <div className="w-10 h-10 rounded-2xl bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center">
-            <Check className="w-5 h-5 stroke-[2.5]" />
-          </div>
-        )}
+{isCompleted && (
+  <div className="w-10 h-10 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-inner dark:shadow-[inset_0_0_10px_rgba(16,185,129,0.25)] border border-emerald-200/50 dark:border-emerald-500/30">
+    <Check className="w-5 h-5 stroke-[2.5]" />
+  </div>
+)}
         {isActive && (
           <button
             type="button"

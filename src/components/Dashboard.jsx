@@ -11,6 +11,7 @@ import {
   Lock,
   ShieldCheck,
   Sparkles,
+  PartyPopper,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext.jsx';
 import ChapterCard from './ChapterCard.jsx';
@@ -77,25 +78,24 @@ export default function Dashboard() {
   return (
     <main id="view-dashboard" className="view-container p-4 sm:p-6 lg:p-10 space-y-8 max-w-7xl mx-auto w-full">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-       <div className="lg:col-span-2 bg-gradient-to-r from-purple-800 via-purple-700 to-indigo-800 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-lg shadow-purple-500/20 flex flex-col justify-between">
+       <div className="lg:col-span-2 bg-gradient-to-r from-violet-800 via-purple-800 to-indigo-800 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-lg shadow-purple-500/20 flex flex-col justify-between">
           <div className="relative z-10">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-bold uppercase tracking-wider mb-3">
-              <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-bold uppercase tracking-wider mb-3 -ml-2">
               GRADE 6
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold font-display">
               Welcome Back, <span className="global-user-name">{user.name.split(' ')[0]}</span>
             </h2>
             <p className="text-purple-100 text-xs sm:text-sm mt-2 max-w-lg leading-relaxed">
-              You&apos;re on a legendary {user.streak}-day streak! Your momentum is unstoppable, keep pushing those boundaries.
+              You&apos;re on a legendary {user.streak} day streak! Your momentum is unstoppable, keep pushing those boundaries.
             </p>
           </div>
 
           <div className="mt-8 pt-6 border-t border-white/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
             <div className="flex-1 max-w-xs">
               <div className="flex items-center justify-between text-xs font-bold mb-1.5 text-purple-100 uppercase tracking-wider">
-                <span>Unit Progress</span>
-                <span>Unit 1</span>
+                <span>CHAPTER 02</span>
+                <span>47%</span>
               </div>
               <div className="w-full bg-black/20 h-2.5 rounded-full overflow-hidden p-0.5">
                 <div className="bg-purple-200 h-full rounded-full w-1/3 transition-all duration-500 shadow-sm" />
@@ -114,7 +114,7 @@ export default function Dashboard() {
           </div>
 
           <div className="absolute right-6 top-6 w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center transform rotate-12 pointer-events-none">
-            <Sparkles className="h-7 w-7 text-purple-100 drop-shadow-sm" aria-label="Celebration" />
+            <PartyPopper className="h-7 w-7 text-purple-100 drop-shadow-sm" aria-label="Celebration" />
           </div>
         </div>
 
@@ -132,7 +132,7 @@ export default function Dashboard() {
             </p>
           </div>
           <div className="pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[11px] font-bold text-slate-400">
-            <span>Personal Coach</span>
+            <span>Got Questions?</span>
             <button type="button" onClick={() => navigateTo('ai-tutor')} className="text-purple-600 dark:text-purple-400 hover:underline">
               Ask Eli →
             </button>
@@ -266,15 +266,15 @@ export default function Dashboard() {
               {ACHIEVEMENTS.map((badge, index) => {
                 const Icon = badge.icon;
 
-                return (
-                  <div
-                    key={`${badge.title}-${index}`}
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center text-lg ${badge.className} ${badge.locked ? '' : 'shadow-sm hover:scale-110 transition-transform cursor-pointer'}`}
-                    title={badge.title}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </div>
-                );
+               return (
+    <div
+      key={`${badge.title}-${index}`}
+      className={`w-12 h-12 rounded-2xl flex items-center justify-center text-lg ${badge.className} shadow-inner border border-black/5 dark:border-white/20 ${badge.locked ? '' : 'hover:scale-110 transition-transform cursor-pointer'}`}
+      title={badge.title}
+    >
+      <Icon className="w-5 h-5" />
+    </div>
+  );
               })}
             </div>
           </div>

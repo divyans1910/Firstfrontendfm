@@ -19,8 +19,26 @@ import ChapterModal from './components/ChapterModal.jsx';
 const AUTH_VIEWS = ['student-login', 'role-select'];
 
 export default function App() {
-  const { currentView, closeDropdowns } = useApp();
+  const { currentTheme, currentView, closeDropdowns } = useApp();
   const isAuth = AUTH_VIEWS.includes(currentView);
+
+  // Apply dark mode class to root html/body based on currentTheme state
+  useEffect(() => {
+    const root = document.documentElement;
+    if (currentTheme === 'dark') {
+      root.classList.add('dark');
+    } else if (currentTheme === 'light') {
+      root.classList.remove('dark');
+    } else {
+      // System default check
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (prefersDark) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    }
+  }, [currentTheme]);
 
   useEffect(() => {
     const onDocumentClick = (event) => {

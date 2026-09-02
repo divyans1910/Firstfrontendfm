@@ -34,8 +34,8 @@ export default function Roadmap2() {
             
             <div className="relative z-10">
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="px-3 py-0.5 rounded-full bg-white/20 text-[10px] font-extrabold uppercase tracking-widest backdrop-blur-md border border-white/10">Active Unit</span>
-                <span className="text-purple-200 text-xs font-bold">Unit 1 of 4</span>
+                <span className="px-3 py-0.5 rounded-full bg-white/20 text-[10px] font-extrabold uppercase tracking-widest backdrop-blur-md border border-white/10">Chapter 02</span>
+                <span className="text-purple-200 text-xs font-bold">Unit 01</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black font-display tracking-tight text-white drop-shadow-sm">Neural Foundations</h3>
               <p className="text-purple-100 text-xs sm:text-sm mt-1 font-medium max-w-md">Master the core concepts of perceptrons, hidden activation layers, and backpropagation optimization.</p>
@@ -47,7 +47,7 @@ export default function Roadmap2() {
               </div>
               <span className="px-3.5 py-1.5 rounded-2xl bg-white/20 backdrop-blur-md text-xs font-black flex items-center gap-1.5 shadow-inner border border-white/10">
                 <Check className="w-4 h-4 stroke-[3] text-emerald-300" />
-                3/3 Ready
+                3/3 Done
               </span>
             </div>
           </div>
@@ -77,10 +77,13 @@ export default function Roadmap2() {
               </button>
             </div>
 
+            {/* Floating book between Node 1 and Node 2 */}
+            <span className="relative z-20 block w-fit ml-4 my-1 text-3xl animate-bounce" aria-label="Book">📖</span>
+
             {/* Node 2 - Aligned to deep left trough */}
-            <div className="relative z-10 flex justify-start pl-16 pt-10 group">
+            <div className="relative z-10 flex justify-start pl-36 pt-4 group">
               <div className="absolute left-32 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/95 dark:bg-white/95 text-white dark:text-slate-900 text-[11px] font-extrabold px-3.5 py-2 rounded-2xl shadow-xl pointer-events-none whitespace-nowrap backdrop-blur-md z-30 border border-slate-700/50 dark:border-slate-200/50">
-                Neural Basics
+                Introduction to Neural Basics 
               </div>
               <button type="button" onClick={() => launchLesson('VIDEO', 'Neural Basics')} className="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-700 via-purple-600 to-indigo-600 text-white shadow-xl shadow-purple-600/40 flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all ring-4 ring-white dark:ring-slate-900 relative">
                 <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -89,8 +92,8 @@ export default function Roadmap2() {
             </div>
 
             {/* Node 3 - Aligned to exaggerated right peak */}
-            <div className="relative z-10 flex justify-end pr-16 pt-10 pb-4 group">
-              <div className="absolute right-32 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/95 dark:bg-white/95 text-white dark:text-slate-900 text-[11px] font-extrabold px-3.5 py-2 rounded-2xl shadow-xl pointer-events-none whitespace-nowrap backdrop-blur-md z-30 border border-slate-700/50 dark:border-slate-200/50">
+            <div className="relative z-10 flex justify-end pr-36 pt-12 pb-4 group">
+              <div className="absolute right-52 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/95 dark:bg-white/95 text-white dark:text-slate-900 text-[11px] font-extrabold px-3.5 py-2 rounded-2xl shadow-xl pointer-events-none whitespace-nowrap backdrop-blur-md z-30 border border-slate-700/50 dark:border-slate-200/50">
                 Weights & Biases
               </div>
               <button type="button" onClick={() => launchLesson('VIDEO', 'Weights & Biases')} className="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-700 via-purple-600 to-indigo-600 text-white shadow-xl shadow-purple-600/40 flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all ring-4 ring-white dark:ring-slate-900 relative">
@@ -116,9 +119,9 @@ export default function Roadmap2() {
             </div>
 
             {/* Active Next Lesson Node - Aligned to lower left curve */}
-            <div className="relative z-10 flex justify-start pl-12 pt-2 pb-6 group">
-              <div className="absolute left-28 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/95 dark:bg-white/95 text-white dark:text-slate-900 text-[11px] font-extrabold px-3.5 py-2 rounded-2xl shadow-xl pointer-events-none whitespace-nowrap backdrop-blur-md z-30 border border-slate-700/50 dark:border-slate-200/50">
-                Tokens & Data • Next Up
+            <div className="relative z-10 flex justify-center -ml-16 pt-2 pb-6 group">
+              <div className="absolute left-[calc(50%+3rem)] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/95 dark:bg-white/95 text-white dark:text-slate-900 text-[11px] font-extrabold px-3.5 py-2 rounded-2xl shadow-xl pointer-events-none whitespace-nowrap backdrop-blur-md z-30 border border-slate-700/50 dark:border-slate-200/50">
+                Neural Basics
               </div>
               <div className="flex flex-col items-center">
                 <div className="px-3.5 py-1.5 rounded-2xl bg-gradient-to-r from-purple-600 via-fuchsia-600 to-indigo-600 text-white font-black text-[10px] shadow-lg shadow-purple-600/30 mb-2.5 flex items-center gap-1.5 animate-bounce whitespace-nowrap tracking-wider uppercase border border-white/20">
@@ -211,7 +214,6 @@ export default function Roadmap2() {
                   <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Roadmap Index</p>
                 </div>
               </div>
-              <Target className="w-4 h-4 text-slate-400" />
             </div>
 
             <div className="space-y-2.5 relative z-10">
@@ -257,8 +259,8 @@ export default function Roadmap2() {
               </button>
             </div>
 
-            <button type="button" onClick={() => navigateTo('roadmap-1')} className="w-full mt-4 py-3 rounded-2xl bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 text-xs font-extrabold text-purple-700 dark:text-purple-300 hover:bg-purple-100 transition-colors text-center block cursor-pointer shadow-sm border border-purple-200/60 dark:border-purple-900/50">
-              View Full Master Map 🗺️
+            <button type="button" onClick={() => navigateTo('roadmap-1')} className="w-full mt-4 py-3 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 text-xs font-extrabold text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-colors text-center block cursor-pointer shadow-sm border border-blue-200/60 dark:border-blue-900/50">
+              View Full Master Map
             </button>
           </div>
 
