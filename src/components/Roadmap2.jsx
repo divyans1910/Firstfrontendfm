@@ -77,11 +77,8 @@ export default function Roadmap2() {
               </button>
             </div>
 
-            {/* Floating book between Node 1 and Node 2 */}
-            <span className="relative z-20 block w-fit ml-4 my-1 text-3xl animate-bounce" aria-label="Book">📖</span>
-
-            {/* Node 2 - Aligned to deep left trough */}
-            <div className="relative z-10 flex justify-start pl-36 pt-4 group">
+            {/* Node 2 - Moved down slightly more */}
+            <div className="relative z-10 flex justify-start pl-36 pt-24 group">
               <div className="absolute left-32 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/95 dark:bg-white/95 text-white dark:text-slate-900 text-[11px] font-extrabold px-3.5 py-2 rounded-2xl shadow-xl pointer-events-none whitespace-nowrap backdrop-blur-md z-30 border border-slate-700/50 dark:border-slate-200/50">
                 Introduction to Neural Basics 
               </div>
@@ -91,8 +88,8 @@ export default function Roadmap2() {
               </button>
             </div>
 
-            {/* Node 3 - Aligned to exaggerated right peak */}
-            <div className="relative z-10 flex justify-end pr-36 pt-12 pb-4 group">
+            {/* Node 3 - Kept proportionally lower */}
+            <div className="relative z-10 flex justify-end pr-36 pt-24 pb-4 group">
               <div className="absolute right-52 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/95 dark:bg-white/95 text-white dark:text-slate-900 text-[11px] font-extrabold px-3.5 py-2 rounded-2xl shadow-xl pointer-events-none whitespace-nowrap backdrop-blur-md z-30 border border-slate-700/50 dark:border-slate-200/50">
                 Weights & Biases
               </div>
